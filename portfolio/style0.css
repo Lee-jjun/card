@@ -1,0 +1,59 @@
+ .box p {
+    text-align: center;
+   color: rgb(134, 134, 235);
+   font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+ }
+ body {
+     margin: 0;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: white; /* 뒷배경 */
+     font-family: sans-serif;
+}
+.box {
+    width: 1440px;
+    border-style: none;  
+    height: 670px;    
+    margin: 20px;
+    padding: 20px;
+    border:1px solid rgb(174, 174, 246);
+    background-color:rgb(174, 174, 236, 0.2);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);   
+  }
+  .shadow { 
+    box-shadow: 0px 8px 32px rgb(174, 174, 236);
+    border-radius: 150px;
+}
+
+a {
+  color: rgb(136, 136, 231);
+  text-decoration: none;
+}
+.project {
+  position: absolute;     /* 상단 우측 고정을 위해 */
+  top: 120px;
+  right: 40px;    
+  background-color: white;  /* 파란색 배경 */
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow:0 10px 23px rgba(255, 255, 255, 0.89);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.home {
+  position: absolute;     /* 상단 우측 고정을 위해 */
+  top: 10px;
+  right: 492px;    
+  background-color: white;  /* 파란색 배경 */
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow:0 10px 23px rgba(255, 255, 255, 0.89);
+  font-size: 30px;
+  font-weight: bold;
+}
