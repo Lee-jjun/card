@@ -203,6 +203,14 @@ body {
   left: 44%;
   top: 150px;
  }
+
+.photo3 {
+  position: absolute;
+  width: 350px;
+  top: 20px;
+  left: 1%; 
+} 
+
  .project :hover {
   background-color: white;
   color: rgb(136, 136, 231);
