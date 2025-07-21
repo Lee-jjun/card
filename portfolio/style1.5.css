@@ -380,10 +380,10 @@
         position: absolute;     /* 상단 우측 고정을 위해 */
         top: 10px;
         right: 14%;    
-        background-color: white;  /* 파란색 배경 */
+        background-color: rgba(255, 255, 255, 0.2);  /* 파란색 배경 */
         padding: 20px 30px;
         border-radius: 8px;
-        box-shadow:0 10px 23px rgba(255, 255, 255, 0.89);
+        box-shadow:0 0px 20px rgba(255, 255, 255, 0.89);
         font-size: 30px;
         font-weight: bold;
         color: rgb(136, 136, 231);
@@ -395,10 +395,10 @@
         position: absolute;     /* 상단 우측 고정을 위해 */
         top: 10px;
         right: 3%;    
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.2);
         padding: 20px 30px;
         border-radius: 8px;
-        box-shadow:0 10px 23px rgba(255, 255, 255, 0.89);
+        box-shadow:0 0px 20px rgba(255, 255, 255, 0.89);
         font-size: 30px;
         font-weight: bold;
         transition: all 1.3s ease;  
@@ -407,14 +407,14 @@
     }
 
    .project :hover {
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.2);
         color: rgb(136, 136, 231);
         transform: scale(1.1);
         box-shadow: 0 10px 23px rgba(255, 255, 255, 0.89); 
     }
 
     .home :hover {
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.2);
         color: rgb(136, 136, 231);
         transform: scale(1.1);
         box-shadow: 0 10px 23px rgba(255, 255, 255, 0.89); 
