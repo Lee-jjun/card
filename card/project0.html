@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="style0.css" />
+</head>
+<body>
+    <div class="background">
+        <div class="card-container">
+      <div class="card" id="flipCard">
+        <div class="card-face front">
+    <div class="content">
+    <header>      
+    <div class="box shadow">
+        <p>Project.</p>
+            <div class="project">    
+                <a href="project1.5.html" onclick="fadeAndGo(event, this.href)">AI-X 프로젝트</a>
+            </div>
+            <div class="home" >
+                <a href="index.html" onclick="flipAndGo(event, this.href)">Home</a>
+            </div>
+    </div>
+    </header>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<script>
+    function fadeAndGo(e, url) {
+        e.preventDefault();
+        const content = document.querySelector('.content');
+        content.classList.add('fade-out-blur');
+        setTimeout(() => {
+            window.location.href = url;
+        }, 100);
+    }
+    </script>
+    <script>
+      function flipAndGo(e, url) {
+        e.preventDefault();
+        const card = document.getElementById('flipCard');
+        card.classList.add('flipped');
+        setTimeout(() => {
+          window.location.href = url;
+        }, 500); // flip 애니메이션 길이와 동일
+      }
+    </script>  
+  </body>
+</html>

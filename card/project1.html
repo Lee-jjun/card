@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>서울시 외래관광객 분석 - 상세</title>
+  <link rel="stylesheet" href="style1.css" />
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+  <!-- Prism JS (라이브러리 + 언어) -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css" />
+  <script src="https://unpkg.com/fullpage.js/dist/fullpage.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📊 서울시 외래관광객 데이터 분석</h1>
+        <h2>데이터 분석 및 시각화</h2>
+        <h2>사용 도구</h2>
+        <ul style="list-style-type: none;">
+          <li>Python (Pandas, Matplotlib, Seaborn)</li>
+          <li>Excel, Tableau</li>
+        </ul>
+  </header>
+<hr>
+<h2>프로젝트 개요</h2>
+<b><p>🔹 프로젝트 배경</p></b>
+<p>코로나19 이후 세계 관광시장이 점차 회복됨에 따라 서울시는 외래관광객 유치를 위한 전략 수립이 중요한 과제가 되었다. 
+   다양한 국적과 특성을 가진 관광객의 방문 목적과 행동 패턴, 만족 요인을 분석함으로써, 보다 효과적인 관광 정책과 마케팅 전략을 도출할 필요가 있다.</p>
+<b><p>🔹 프로젝트 목적</p></b>
+<p>서울을 방문한 외래관광객의 특성과 만족도를 데이터 기반으로 분석하고, 
+   관광객의 국가별, 연령별, 목적별 차이를 파악하여 서울시의 관광 전략 수립에 도움이 되는 
+   인사이트를 제공하는 것이 본 프로젝트의 핵심 목표이다.</p>
+   <hr>
+        <h2>제공받은 데이터 가공</h2>
+<div class="image-center1">
+  <img src="./images/(데이터 3가공) 엑셀파일.png" width="50%">
+</div>
+
+  <pre ><code class="language-python">
+  import pandas as pd
+  import glob
+  import os
+  import re
+  
+  # 데이터 저장용 리스트
+  foreigner_visitor_2020_data = []
+  immigration_data = []
+  purpose_nationality_data = []
+  
+  # 엑셀 파일 읽기 예시
+  df = pd.read_excel(file_path, sheet_name=1, header=0)
+  print("  -> 양식: '방한외래관광객' (2시트, 1행 헤더)")
+  
+  df = pd.read_excel(file_path, sheet_name=0, header=1)
+  print("  -> 양식: 'immigration' (1시트, 2행 헤더)")
+  
+  df = pd.read_excel(file_path, sheet_name=0, header=0)
+  print("  -> 양식: '목적별 국적별 입국' (1시트, 1행 헤더, 특수 컬럼명)")
+  </code></pre>
+  
+</div>
+<img src="./images/(데이터 3가공) 데이터프레임3.png" alt="데이터프레임3" width="30%">
+<img src="./images/(데이터 3가공) 데이터프레임2.png" alt="데이터프레임2" width="30%">
+<img src="./images/(데이터 3가공) 데이터프레임1.png" alt="데이터프레임1" width="30%">
+       <hr>
+  <h2>년도별 시각화</h2>
+  <ul>
+    <li>
+      <div class="flex-row">
+      <img src="./images/년도별 시각화1.png" width="25%">
+      <div class="arrow-with-label">
+        <div class="label1">년도별</div>
+      <img src="./images/화살표.png" width="50%">
+      </div>
+      <img src="./images/년도별 시각화2.png" width="10%">
+      <div class="arrow-with-label">
+        <div class="label2">시각화</div>
+      <img src="./images/화살표.png" width="50%">
+      </div>
+      <img src="./images/년도별 시각화3.png" width="30%">
+      </div>
+    </li>
+  </ul>
+<hr>
+  <h2>코라나 이후 연간 회복 시각화</h2>
+        <img src="./images/연간회복 지도.png" width="45%" height="250px">
+        <img src="./images/연간회복 그래프.png" width="50%">
+<hr>
+  <h2>외래관광객이 서울시로 몰리는 이유</h2>
+       <b>🔹 문화 콘텐츠의 글로벌 인기<br></b>
+      - K-pop, K-drama, K-food 등 한류 콘텐츠의 세계적 확산<br>
+      - BTS, 블랙핑크, <이상한 변호사 우영우>, <오징어게임> 등<br>
+      - 관광 목적이 ‘한류 체험’이라는 응답 비율 증가<br>
+    <b><p>🔹 쇼핑·미식 중심의 도시 관광 인프라<br></b>
+      - 서울은 면세점, 백화점, 전통시장, 거리 상권(명동, 홍대, 강남 등)이  압도적 쇼핑 허브<br>
+      - 다양한 미식 콘텐츠 (김치, 삼겹살, 길거리 음식 등)는 외국인 관광 만족도 상위 항목</p>
+    <b><p>🔹 접근성과 교통 편의성<br></b>
+      - 인천공항, 김포공항을 통한 국제 접근성<br>
+      - 지하철·버스·카카오맵·영어 표기 등으로 이동이 편리</p>
+    <b><p>🔹 역사와 현대가 공존하는 관광지<br></b>
+      - 경복궁, 북촌한옥마을 등 전통 유산 + 남산타워, 청계천 등 현대적 관광 요소<br>
+      - 도보 가능 거리 내 다양한 경험 가능 → "콤팩트한 도시 관광"</p>
+    <b><p>🔹 정부 및 지자체의 관광 정책<br></b>
+      - 서울관광재단, 서울시의 외래관광객 유치 마케팅 확대<br>
+      - 무료 Wi-Fi, 외국어 가이드북, 관광버스 운영<br>
+      - 국가별 맞춤 콘텐츠 제공</p>
+    <b><p>🔹 안전하고 청결한 도시 이미지<br></b>
+      - 치안, 위생 수준에서 아시아 지역 대비 높은 평가<br>
+      - 관광객 설문조사에서 "안전하다", "깨끗하다"는 응답 비율 높음</p>
+      <hr>
+  <h2>한국 문화 콘텐츠</h2>
+  <div class="photo-wrapper">
+  <img src="./images/콘텐츠사진2.jpg" width="45%">
+  <img src="./images/콘텐츠사진1.jpg" width="45%">
+  <img src="./images/콘텐츠사진3.jpg" width="40%">
+  <img src="./images/콘텐츠사진4.png" width="45%">
+  <img src="./images/콘텐츠사진5.jpg" class="photo-overlay">
+ </div>
+<hr>
+  <h2>서울시 주요 관광지 데이터</h2>
+  <div class="photo1">
+    <img src="./images/주요관광지 데이터.png" width="65%" class="left12">
+    <img src="./images/주요관광지 데이터프레임.png" width="70%" class="photo-overlay1">
+</div>
+<hr>
+  <h2>외국인만 주요관광지 시각화</h2>
+  <div class="photo2">
+    <img src="./images/주요관광지 데이터(외국인만).png" width="45%" class="photo-overlay2">
+    <img src="./images/주요관광지 시각화(외국인만).png" width="50%" class="photo-overlay3">
+    <div class="image-center">
+    <img src="./images/화살표.png" width="8%" alt="화살표">
+    </div>
+  </div>
+  <hr>
+  <h2>4대궁 및 종묘 코로나 이후 흐름</h2>
+    <img src="./images/코로나 이후 흐름.png" width="95%">
+    <hr>
+<h2>외래관광객 만족도</h2>
+<p>데이터 가공 후 시각화 </p>
+  <img src="./images/만족도 데이터.png" width="30%">
+  <img src="./images/만족도 시각화.png" width="69%">
+<hr>
+<h2>외래관광객 특성에 따른 만족도 비교 시각화</h2>
+  <img src="./images/특성에 따른 만족도(성별).png" width="45%">
+  <img src="./images/특성에 따른 만족도(연령별).png" width="45%">
+  <img src="./images/특성에 따른 만족도(방한 목적).png" width="45%">
+  <img src="./images/특성에 따른 만족도(방한 횟수).png" width="48%">
+  <hr>
+  <h2>외래관광객 예측 분석 하기</h2>
+  <img src="./images/예측분석 시각화.png" width="99%">
+<hr>
+  <h2>예측분석 하면 좋은이유</h2>
+  <b><p>🔹 미래 수요에 선제 대응 가능<br></b>
+    - 관광객 수요를 국가별·시기별로 예측함으로써, 항공·숙박·교통 자원 등을 사전에 배치할 수 있습니다.<br>
+    ex) "올해 가을에 일본인 관광객이 증가할 것으로 예측 → 관련 관광 마케팅 강화“</p>
+  <b><p>🔹 맞춤형 마케팅 및 서비스 제공<br></b>
+    -방문객 특성과 행동 패턴을 기반으로 재방문 가능성이높은 국가나 연령층을 예측 → 타겟 마케팅 가능<br>
+    ex) “20대 여성 관광객은 한류 콘텐츠에 민감 → 관련코스 집중 홍보"</p>
+  <b><p>🔹 지속가능한 관광 전략 수립<br></b>
+    - 특정 시즌, 특정 국가에서의 집중도 과도할 경우→ 혼잡 예측 → 관광 분산 정책 설계 가능<br>
+    ex) "명동 혼잡 예상 시기 예측 → 다른 관광지 추천"</p>
+  <b><p>🔹 관광 정책의 효과를 사전 시뮬레이션<br></b>
+    - “외국어 표지 확충 시 만족도는 얼마나 올라갈까?” 등의 정책 효과를 예측 모델로 검증 가능<br>
+    - 정책 실행 전 리스크를 줄이고, 가장 효과적인 전략을 선택할 수 있음</p>
+  <b><p>🔹 비정형 데이터까지 통합 분석 가능<br></b>
+    - SNS 후기, 리뷰 등 비정형 텍스트도 감성분석 + 예측모델에 결합 가능<br>
+    - 감성 트렌드 → 특정 관광지/이벤트의 반응 예측</p>
+ <b><p class="font1">요약</p></b>
+    <p class="font2">- 예측 분석은 단순한 과거 해석을 넘어, 데이터 기반으로 미래를 준비하는 전략적 도구입니다.<br>
+                     - 서울시 관광의 수요 예측, 마케팅 타겟 설정, 정책 시뮬레이션 등에 큰 과를 발휘합니다.</p>
+    <hr>
+    <div class="container">
+    <div class="box">
+      <hr>
+    <h2>정책 제언</h2>
+    <b><p>- 국가별 맞춤형 관광 콘텐츠 제공<br>
+    ＊ 일본·중국 관광객: 쇼핑 및 단기 체류 중심<br>
+      → 쇼핑 쿠폰/할인이벤트 강화<br>
+    ＊ 서구권 관광객: 역사, 문화 선호</p>
+        → 전통문화 투어 패키지 강화</br>
+      <p>- 관광 다국어 인프라 확대<br>
+    ＊ 관광안내, 지도 앱의 다국어 지원 확대<br>
+      (중국어, 영어, 일본어 중심)<br>
+    ＊ AI 기반 통역 지원 앱 도입</p>
+      <p>- 지역 분산형 관광 활성화<br>
+    ＊ 명동·홍대 집중<br>
+    → 다른 관광지(성수동, 을지로, 북서울) 홍보<br>
+    ＊ SNS 활용한 숨은 명소 마케팅</p>
+      <p>- 디지털 관광환경 개선<br>
+    ＊ 외국 카드, 간편결제 지원 확대<br>
+    ＊ 정보 제공 앱 개발</p>
+      <p>- 관광 만족도 지속 모니터링<br>
+    ＊ 외래관광객 만족도 조사 및 텍스트마이닝 분석</p>
+  </div>
+  <div class="box">
+    <h2>분석 결론 요약</h2>
+    <p>- 외래 관광객 방문 비중 상위 국가는 일본, 중국, 미국</p>
+    <p>- 관광 목적: 쇼핑, 음식, 한류 체험</p>
+    <p>- 체류일수 및 소비지출은 국가·연령대 따라 차이</br>
+      ＊ 만족 요인: 음식, 쇼핑 편의성, 대중교통</br>
+      ＊ 불만 요인: 언어장벽, 결제 불편, 관광지 혼잡</p></b>
+  </div>
+    </div>
+    <hr>
+        <h2>데이터 출처</h2>
+        <ul>
+          <li>서울열린데이터광장</li>
+          <li>KOSIS</li>
+        </ul>
+    <a href="index.html">← 포트폴리오로 돌아가기</a><br>
+    <a href="project0.html">← 프로젝트로 돌아가기</a>
+  </section>
+
+  <footer>
+    <p>© 2025 이재준</p>
+  </footer>
+</body>
+</html>
